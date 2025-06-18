@@ -1,0 +1,22 @@
+name: CI-CD
+
+on: 
+  push:
+    branches: ["main"]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v4.2.2 
+    - name: Construção de imagem docker
+    - uses: docker/build-push-action@v6.18.0
+      width: 
+        context: ./src
+        file: ./src/Dockerfile
+        push: true
+        tags: |
+          samutml/githact:v1
+          samutml/githact:latest
+        
+        
